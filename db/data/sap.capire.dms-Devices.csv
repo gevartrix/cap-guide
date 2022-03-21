@@ -1,9 +1,0 @@
-ID;name;category_ID;description;quantity;price;currency_code
-101;Lenovo Thinkpad T480;1;Business laptop;15;740;usd
-102;Acer Swift 7;1;Lightweight and thinner than typical laptops;20;860;usd
-103;Dell XPS 15;1;Amazing speakers, beautiful display and comfy keyboard;8;949.95;usd
-201;Samsung Galaxy Tab A8;2;A screen everyone will love: it brings out the best in every moment on a 10.5" LCD screen;32;234;usd
-202;Apple iPad;2;No decription;14;189.95;usd
-203;Microsoft Surface Pro 7;2;Whatever your office looks like, be it a cubicle or cafe, new Surface Pro 7 is your ultra-light, endlessly adaptable partner;0;900;usd
-284;Toshiba Encore 2;2;Tablet for business use cases;42;120;usd
-301;Apple iPhone 12;3;Backed by a one-year satisfaction guarantee;0;779;usd
