@@ -1,0 +1,54 @@
+## Generated mta.yaml based on template version 0.4.0
+## appName = dms
+## language=nodejs; multitenant=false
+## approuter=
+_schema-version: '3.1'
+ID: dms
+version: 1.0.0
+description: "A simple CAP project."
+parameters:
+  enable-parallel-deployments: true
+   
+build-parameters:
+  before-all:
+   - builder: custom
+     commands:
+      - npm ci
+      - npx -p @sap/cds-dk cds build --production
+
+modules:
+ # --------------------- SERVER MODULE ------------------------
+ - name: dms-srv
+ # ------------------------------------------------------------
+   type: nodejs
+   path: gen/srv
+   parameters:
+     buildpack: nodejs_buildpack
+   build-parameters:
+     builder: npm-ci
+   requires:
+    # Resources extracted from CAP configuration
+    - name: dms-uaa
+   provides:
+    - name: srv-api      # required by consumers of CAP services (e.g. approuter)
+      properties:
+        srv-url: ${default-url}
+
+
+
+resources:
+ # services extracted from CAP configuration
+ # 'service-plan' can be configured via 'cds.requires.<name>.vcap.plan'
+# ------------------------------------------------------------
+ - name: dms-uaa
+# ------------------------------------------------------------
+   type: org.cloudfoundry.managed-service
+   parameters:
+     path: ./xs-security.json
+     service: xsuaa
+     service-plan: application  
+     config:
+       xsappname: dms-${space}    #  name + space dependency
+       tenant-mode: dedicated
+
+
